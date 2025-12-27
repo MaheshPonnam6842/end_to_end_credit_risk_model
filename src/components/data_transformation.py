@@ -15,6 +15,18 @@ from src.utils import save_object
 class DataTransformationConfig:
     preprocessor_obj_file_path: str= os.path.join("artifacts","preprocessor.pkl")
 
+### Feature Selection Based on Domain Knowledge, EDA, Feature Importance, Correlation Analysis and VIF
+
+SELECTED_NUMERIC_FEATURES = [
+    'age', 'income', 'loan_amount', 'loan_to_income',
+ 'loan_tenure_months', 'avg_dpd_per_delinquency',
+ 'delinquency_ratio', 'credit_utilization_ratio',
+ 'number_of_open_accounts'
+]
+
+SELECTED_CATEGORICAL_FEATURES = [
+    'residence_type', 'loan_purpose', 'loan_type'
+]
 class DataTransformation:
     def __init__(self):
         self.data_transformation_config= DataTransformationConfig()
@@ -84,12 +96,16 @@ class DataTransformation:
 
             X_test = test_df.drop(columns=[target_column])
             y_test = test_df[target_column]
-            num_column= X_train.select_dtypes(include=["int32","float32","int64", "float64"]).columns
-            
-            cat_column= X_train.select_dtypes(include=["object"]).columns
-            logging.info(f"Numerical columns count: {len(num_column)}")
-            logging.info(f"Categorical columns count: {len(cat_column)}")
 
+
+            num_column = [col for col in SELECTED_NUMERIC_FEATURES if col in X_train.columns]
+            cat_column = [col for col in SELECTED_CATEGORICAL_FEATURES if col in X_train.columns]
+
+            X_train = X_train[num_column + cat_column]
+            X_test = X_test[num_column + cat_column]
+
+            logging.info(f"Selected numerical features: {num_column}")
+            logging.info(f"Selected categorical features: {cat_column}")
             preprocessor_obj= self.get_data_transformer_obj(num_column,
             cat_column
                 )
