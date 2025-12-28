@@ -62,20 +62,34 @@ class DataTransformation:
         except Exception as e:
             raise CustomException(e, sys)
         
-        
+    def _normalize_categoricals(self, df: pd.DataFrame) -> pd.DataFrame:
+        df["residence_type"] = df["residence_type"].str.strip().str.lower()
+        df["loan_purpose"] = df["loan_purpose"].str.strip().str.lower()
+        df["loan_type"] = df["loan_type"].str.strip().str.lower()
+        return df   
 
     def initiate_data_transformation(self, train_path, test_path):
         try:
             logging.info("Reading Train and Test Data")
             train_df=pd.read_csv(train_path)
             test_df=pd.read_csv(test_path)
+ 
             logging.info("Read Train and Test data completed")
+
+            # Normalize categorical inputs (TRAIN & TEST)
+            train_df = self._normalize_categoricals(train_df)
+            test_df = self._normalize_categoricals(test_df)
 
             target_column= "default"
             logging.info("Adding features Feature Engineering")
             for df in [train_df, test_df]:
 
-                df["loan_to_income"] = df["loan_amount"] / df["income"]
+                df["loan_to_income"] = np.where(
+                    df["income"] == 0,
+                    0,
+                    df["loan_amount"] / df["income"]
+                    )
+
 
                 df["delinquency_ratio"] = np.where(
                 df["total_loan_months"] == 0,

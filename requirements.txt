@@ -6,5 +6,5 @@ xgboost
 seaborn
 dill
 xgboost
+flask
 
--e .
