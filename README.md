@@ -310,3 +310,6 @@ The application was successfully deployed and validated using **Docker, AWS ECR,
 After verifying the complete CI/CD and deployment workflow, the cloud resources were **intentionally decommissioned** to avoid unnecessary ongoing costs.
 
 The entire deployment setup is fully **reproducible** using the provided Dockerfile, GitHub Actions workflow, and documented AWS configuration steps.
+
+This reflects real-world, cost-conscious engineering practices commonly followed in production environments.
+
