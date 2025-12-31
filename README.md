@@ -89,14 +89,14 @@ flowchart LR
 This diagram shows the end-to-end architecture of the Credit Risk Prediction system, 
 covering training, inference, Dockerization, and AWS deployment.
 
-![Project Architecture](assets/Project_Architecture.png)
+![Project Architecture](pictures/Project_Architecture.png)
 
 ## 📊 Model Performance
 
 Below is the comparison of model performance (AUC-ROC) across different algorithms 
 used during experimentation.
 
-![Best Model Scores](assets/Best_model_scores.png)
+![Best Model Scores](pictures/Best_model_scores.png)
 
 
 ## 📊 Machine Learning Details
