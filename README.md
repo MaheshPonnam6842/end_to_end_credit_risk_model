@@ -299,17 +299,18 @@ Mahesh Ponnam
 Data Scientist | Machine Learning | MLOps
 
 Focused on building production-ready ML systems, not just notebooks.
-
-
+```
 
 
 ## 🧹 Infrastructure Cleanup & Cost Awareness
+```
 
 The application was successfully deployed and validated using **Docker, AWS ECR, AWS EC2, and GitHub Actions**.
 
-After verifying the complete CI/CD and deployment workflow, the cloud resources were **intentionally decommissioned** to avoid unnecessary ongoing costs.
+After verifying the complete CI/CD and deployment workflow, the cloud resources were **intentionally decommissioned** to avoid unnecessary ongoing cloud costs.
 
 The entire deployment setup is fully **reproducible** using the provided Dockerfile, GitHub Actions workflow, and documented AWS configuration steps.
 
-This reflects real-world, cost-conscious engineering practices commonly followed in production environments.
+This reflects real-world, cost-conscious engineering practices commonly followed in production environments and concludes the end-to-end lifecycle of this project.
+
 
