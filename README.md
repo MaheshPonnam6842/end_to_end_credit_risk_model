@@ -89,7 +89,7 @@ flowchart LR
 This diagram shows the end-to-end architecture of the Credit Risk Prediction system, 
 covering training, inference, Dockerization, and AWS deployment.
 
-![Project Architecture](pictures/Project_Architecture.png)
+![Project Architecture](pictures/Project Architecture.png)
 
 ## 📊 Model Performance
 
