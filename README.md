@@ -172,6 +172,9 @@ On every push to the `main` branch:
 
 ## 📁 Project Structure
 
+## 📁 Project Structure
+
+```text
 .
 ├── src/
 │   ├── components/
@@ -202,6 +205,7 @@ On every push to the `main` branch:
 │       └── ci-cd.yml
 │
 └── README.md
+```
 
 ### Structure Overview
 - `src/components` – Core ML components (ingestion, transformation, training)
