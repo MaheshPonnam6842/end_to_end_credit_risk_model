@@ -39,6 +39,36 @@ markdown
 Copy code
 
 ---
+flowchart LR
+    User[User / Browser] -->|HTTP Request| FlaskApp[Flask Web App]
+
+    FlaskApp --> PredictPipeline[Prediction Pipeline]
+
+    PredictPipeline --> Preprocessor[Preprocessor.pkl]
+    PredictPipeline --> Model[Trained ML Model.pkl]
+
+    Preprocessor --> FeatureEngineering[Feature Engineering + Encoding + Scaling]
+    FeatureEngineering --> Model
+
+    Model -->|Probability Output| FlaskApp
+    FlaskApp -->|Risk Score + Label| User
+
+    subgraph Training Pipeline
+        Data[Raw Data] --> Ingestion[Data Ingestion]
+        Ingestion --> Transformation[Data Transformation]
+        Transformation --> SMOTE[SMOTE Balancing]
+        SMOTE --> Training[Model Training (XGBoost)]
+        Training --> Model
+        Transformation --> Preprocessor
+    end
+
+    subgraph CI/CD
+        GitHub[GitHub Repo] --> Actions[GitHub Actions]
+        Actions --> ECR[AWS ECR]
+        ECR --> EC2[AWS EC2]
+    end
+
+    EC2 --> FlaskApp
 
 ## 🔑 Key Highlights
 
