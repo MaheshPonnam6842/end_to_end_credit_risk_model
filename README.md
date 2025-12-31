@@ -172,28 +172,46 @@ On every push to the `main` branch:
 
 ## 📁 Project Structure
 
+.
 ├── src/
-│ ├── components/
-│ │ ├── data_ingestion.py
-│ │ ├── data_transformation.py
-│ │ └── model_trainer.py
-│ ├── pipeline/
-│ │ ├── train_pipeline.py
-│ │ └── predict_pipeline.py
-│ ├── utils.py
-│ ├── logger.py
-│ └── exception.py
+│   ├── components/
+│   │   ├── data_ingestion.py
+│   │   ├── data_transformation.py
+│   │   └── model_trainer.py
+│   │
+│   ├── pipeline/
+│   │   ├── train_pipeline.py
+│   │   └── predict_pipeline.py
+│   │
+│   ├── utils.py
+│   ├── logger.py
+│   └── exception.py
+│
 ├── artifacts/
-│ ├── model.pkl
-│ └── preprocessor.pkl
+│   ├── model.pkl
+│   └── preprocessor.pkl
+│
 ├── templates/
-│ ├── index.html
-│ └── home.html
+│   ├── index.html
+│   └── home.html
+│
 ├── app.py
 ├── Dockerfile
-├── .github/workflows/
-│ └── ci-cd.yml
+├── .github/
+│   └── workflows/
+│       └── ci-cd.yml
+│
 └── README.md
+
+### Structure Overview
+- `src/components` – Core ML components (ingestion, transformation, training)
+- `src/pipeline` – Training and inference pipelines
+- `artifacts` – Serialized model and preprocessing objects
+- `templates` – Flask UI templates
+- `Dockerfile` – Containerization configuration
+- `.github/workflows` – CI/CD pipeline using GitHub Actions
+
+
 
 yaml
 Copy code
